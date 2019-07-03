@@ -1,2 +1,2 @@
-# robofriends
-Robofriends app from the Course Junior to Senior Developer
+A project, made with React and Redux, that has a nice robot listing. 
+You can use the search bar to filter them.
