@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Card = ({id, name, email}) => {
 	console.log('Card');
 	return (
