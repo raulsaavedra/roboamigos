@@ -1,7 +1,6 @@
 import * as React from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
 import './App.css';
 
 export interface IRobot {
@@ -48,9 +47,7 @@ class App extends React.Component<IAppProps, IAppState> {
         <div className='tc'>
           <h1 className='f1'>RoboAmigos</h1>
           <SearchBox searchChange={this.onSearchChange}/>
-          <Scroll>
             <CardList robots={filteredRobots} />
-          </Scroll>
         </div>
       );
   }
