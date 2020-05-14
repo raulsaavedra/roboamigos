@@ -9,8 +9,7 @@ export interface IRobot {
   email: string;
 }
 
-interface IAppProps {
-}
+interface IAppProps {}
 
 interface IAppState {
   robots: Array<IRobot>;
@@ -19,37 +18,39 @@ interface IAppState {
 
 class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
-    super(props)
+    super(props);
     this.state = {
       robots: [],
-      searchfield: ''
-    }
+      searchfield: '',
+    };
   }
 
   componentDidMount(): void {
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response=> response.json())
-      .then(users => {this.setState({ robots: users})});
+      .then(response => response.json())
+      .then(users => {
+        this.setState({ robots: users });
+      });
   }
 
   onSearchChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
-    this.setState({ searchfield: event.currentTarget.value })
-  }
+    this.setState({ searchfield: event.currentTarget.value });
+  };
 
   render(): JSX.Element {
     const { robots, searchfield } = this.state;
-    const filteredRobots = robots.filter(robot =>{
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-    })
-    return !robots.length ?
-      <h1>Loading</h1> :
-      (
-        <div className='tc'>
-          <h1 className='f1'>RoboAmigos</h1>
-          <SearchBox searchChange={this.onSearchChange}/>
-            <CardList robots={filteredRobots} />
-        </div>
-      );
+    const filteredRobots = robots.filter(robot =>
+      robot.name.toLowerCase().includes(searchfield.toLowerCase())
+    );
+    return !robots.length ? (
+      <h1>Loading</h1>
+    ) : (
+      <div className="tc">
+        <h1 className="f1">RoboAmigos</h1>
+        <SearchBox searchChange={this.onSearchChange} />
+        <CardList robots={filteredRobots} />
+      </div>
+    );
   }
 }
 
